@@ -45,7 +45,4 @@ public class Tour {
 
     @OneToMany(fetch = EAGER)
     private List<Reservation> reservations;
-
-    @ManyToMany(fetch = EAGER)
-    private List<Category> categories;
 }

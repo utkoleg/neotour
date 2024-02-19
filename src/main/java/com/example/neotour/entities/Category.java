@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
+
+import static jakarta.persistence.FetchType.EAGER;
 
 @Entity
 @Getter
@@ -23,4 +26,7 @@ public class Category {
 
     @Column(name = "categoryName")
     private String categoryName;
+
+    @ManyToMany(fetch = EAGER)
+    private List<Tour> tours;
 }
