@@ -9,7 +9,6 @@ import lombok.Setter;
 import java.util.List;
 import java.util.UUID;
 
-import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.EAGER;
 
 @Entity
@@ -33,9 +32,6 @@ public class Tour {
 
     @Column(name = "tourLocation")
     private String tourLocation;
-
-//    @OneToOne(fetch = EAGER, cascade = ALL)
-//    private Image image;
 
     @Column(name = "tourImageUrl")
     private String imageUrl;

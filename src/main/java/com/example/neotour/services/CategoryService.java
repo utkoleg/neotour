@@ -1,17 +1,17 @@
 package com.example.neotour.services;
 
-import com.example.neotour.entities.Category;
-import com.example.neotour.entities.Tour;
+import com.example.neotour.dto.response.CategoryResponseDTO;
+import com.example.neotour.dto.response.TourResponseDTO;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CategoryService {
-    Category addCategory(String categoryName);
+    UUID addCategory(String categoryName);
 
-    List<Category> getCategories();
+    List<CategoryResponseDTO> getCategories();
 
-    Category addTourToCategory(UUID id, UUID tourId);
+    UUID addTourToCategory(UUID id, UUID tourId);
 
-    List<Tour> getToursInCategory(UUID id);
+    List<TourResponseDTO> getToursInCategory(UUID id);
 }

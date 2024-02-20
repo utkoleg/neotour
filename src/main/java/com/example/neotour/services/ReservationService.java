@@ -1,9 +1,9 @@
 package com.example.neotour.services;
 
-import com.example.neotour.entities.Reservation;
+import com.example.neotour.dto.request.ReservationRequestDTO;
 
 import java.util.UUID;
 
 public interface ReservationService {
-    Reservation addReservation(UUID id, String phoneNumber, String reservationComment, int numberOfPeople);
+    UUID addReservation(ReservationRequestDTO reservationRequestDTO, UUID id);
 }

@@ -1,9 +1,7 @@
 package com.example.neotour.controllers;
 
+import com.example.neotour.dto.request.ReservationRequestDTO;
 import com.example.neotour.dto.response.TourResponseDTO;
-import com.example.neotour.entities.Comment;
-import com.example.neotour.entities.Reservation;
-import com.example.neotour.entities.Tour;
 import com.example.neotour.services.CommentService;
 import com.example.neotour.services.ReservationService;
 import com.example.neotour.services.TourService;
@@ -30,7 +28,7 @@ public class TourController {
     }
 
     @PostMapping()
-    public Tour addTour(@RequestParam(name = "tourName") String tourName,
+    public UUID addTour(@RequestParam(name = "tourName") String tourName,
                         @RequestParam(name = "tourDescription") String tourDescription,
                         @RequestParam(name = "tourLocation") String tourLocation,
                         @RequestParam(name = "tourImage") MultipartFile image) throws Exception {
@@ -38,7 +36,7 @@ public class TourController {
     }
 
     @GetMapping("/{id}")
-    public Tour getTourById(@PathVariable(name = "id") UUID id) {
+    public TourResponseDTO getTourById(@PathVariable(name = "id") UUID id) {
         return tourService.getTourById(id);
     }
 
@@ -49,7 +47,7 @@ public class TourController {
     }
 
     @PostMapping("/{id}/addComment")
-    public Comment addComment(@PathVariable(name = "id") UUID id,
+    public UUID addComment(@PathVariable(name = "id") UUID id,
                               @RequestParam(name = "commentUsername") String commentUsername,
                               @RequestParam(name = "commentText") String commentText,
                               @RequestParam(name = "commentImage") MultipartFile image){
@@ -57,10 +55,8 @@ public class TourController {
     }
 
     @PostMapping("/{id}/addReservation")
-    public Reservation addReservation(@PathVariable(name = "id") UUID id,
-                                      @RequestParam(name = "phoneNumber") String phoneNumber,
-                                      @RequestParam(name = "reservationComment") String reservationComment,
-                                      @RequestParam(name = "numberOfPeople") int numberOfPeople){
-        return reservationService.addReservation(id, phoneNumber, reservationComment, numberOfPeople);
+    public UUID addReservation(@PathVariable(name = "id") UUID id,
+                                      @RequestBody ReservationRequestDTO reservationRequestDTO){
+        return reservationService.addReservation(reservationRequestDTO, id);
     }
 }

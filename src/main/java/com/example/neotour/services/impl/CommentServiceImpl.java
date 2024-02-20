@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
     private final FileUploadService fileUploadService;
     @Override
-    public Comment addComment(UUID id, String commentUsername, String commentText, MultipartFile image) {
+    public UUID addComment(UUID id, String commentUsername, String commentText, MultipartFile image) {
         Tour tour = tourRepository.findById(id).orElseThrow();
         Comment comment = new Comment();
         comment.setCommentUsername(commentUsername);
@@ -34,6 +34,7 @@ public class CommentServiceImpl implements CommentService {
         }
 
         tour.getComments().add(comment);
-        return commentRepository.save(comment);
+        commentRepository.save(comment);
+        return comment.getCommentId();
     }
 }

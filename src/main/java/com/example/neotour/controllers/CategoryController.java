@@ -1,7 +1,7 @@
 package com.example.neotour.controllers;
 
-import com.example.neotour.entities.Category;
-import com.example.neotour.entities.Tour;
+import com.example.neotour.dto.response.CategoryResponseDTO;
+import com.example.neotour.dto.response.TourResponseDTO;
 import com.example.neotour.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,23 +16,23 @@ import java.util.UUID;
 public class CategoryController {
     private final CategoryService categoryService;
     @PostMapping()
-    private Category addCategory(@RequestParam(name = "categoryName") String categoryName){
+    private UUID addCategory(@RequestParam(name = "categoryName") String categoryName){
         return categoryService.addCategory(categoryName);
     }
 
     @GetMapping()
-    private List<Category> getCategories(){
+    private List<CategoryResponseDTO> getCategories(){
         return categoryService.getCategories();
     }
 
     @PostMapping("{id}")
-    private Category addTourToCategory(@PathVariable(name = "id") UUID id,
+    private UUID addTourToCategory(@PathVariable(name = "id") UUID id,
                                        @RequestParam(name = "tourId") UUID tourId){
         return categoryService.addTourToCategory(id, tourId);
     }
 
     @GetMapping("{id}/tours")
-    private List<Tour> getToursInCategory(@PathVariable(name = "id") UUID id){
+    private List<TourResponseDTO> getToursInCategory(@PathVariable(name = "id") UUID id){
         return categoryService.getToursInCategory(id);
     }
 }
