@@ -21,7 +21,7 @@ Configurations
   
 * CloudinaryConfig: Configures Cloudinary for handling image uploads.
 OpenAPIConfig: Configures OpenAPI documentation for the project.
-Swagger Documentation
+## Swagger Documentation
 
 The project provides OpenAPI documentation for easy understanding and integration with other services. It includes information about contacts, licenses, versions, and servers.
 
