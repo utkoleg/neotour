@@ -5,8 +5,7 @@ import lombok.Builder;
 import java.util.UUID;
 
 @Builder
-public record ReservationRequestDTO(UUID reservationId,
-                                    String phoneNumber,
+public record ReservationRequestDTO(String phoneNumber,
                                     String reservationComment,
                                     int numberOfPeople) {
 }
