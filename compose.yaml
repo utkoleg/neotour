@@ -5,8 +5,8 @@ services:
     container_name: postgres
     image: postgres:11.0-alpine
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
       POSTGRES_DB: neotour
     ports:
       - "5432:5432"
