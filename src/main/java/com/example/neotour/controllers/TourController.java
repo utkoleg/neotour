@@ -1,6 +1,7 @@
 package com.example.neotour.controllers;
 
 import com.example.neotour.dto.request.ReservationRequestDTO;
+import com.example.neotour.dto.request.TourRequestDTO;
 import com.example.neotour.dto.response.TourResponseDTO;
 import com.example.neotour.services.CommentService;
 import com.example.neotour.services.ReservationService;

@@ -1,5 +1,6 @@
 package com.example.neotour.services.impl;
 
+import com.example.neotour.dto.request.TourRequestDTO;
 import com.example.neotour.dto.response.TourResponseDTO;
 import com.example.neotour.entities.Tour;
 import com.example.neotour.repositories.TourRepository;
@@ -53,7 +54,7 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public TourResponseDTO getTourById(UUID id) {
-        Tour tour = tourRepository.findById(id).orElseThrow();
+        Tour tour = tourRepository.findById(id).orElseThrow(() -> new RuntimeException("Tour not found with id: " + id));
         return TourResponseDTO.builder()
                 .tourId(tour.getTourId())
                 .tourName(tour.getTourName())
@@ -69,5 +70,4 @@ public class TourServiceImpl implements TourService {
     public void deleteTourById(UUID id) {
         tourRepository.deleteById(id);
     }
-
 }
